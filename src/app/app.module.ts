@@ -10,7 +10,7 @@ import { GridModule } from '@progress/kendo-angular-grid';
 import { WjGridModule } from '@grapecity/wijmo.angular2.grid';
 
 import { IgxNavigationDrawerModule, IgxNavbarModule, IgxLayoutModule,
-        IgxRippleModule, IgxGridModule, IgxDropDownModule, IgxExcelExporterService } from 'igniteui-angular';
+        IgxRippleModule, IgxGridModule, IgxDropDownModule, IgxExcelExporterService, IgxSelectModule } from 'igniteui-angular';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -57,6 +57,7 @@ import { RecordKeepingService } from './services/recordkeeping.service';
     IgxLayoutModule,
     IgxRippleModule,
     IgxDropDownModule,
+    IgxSelectModule,
 
     IgxGridModule,
     AgGridModule.withComponents([]),

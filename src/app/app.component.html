@@ -3,14 +3,11 @@
     <ng-template igxDrawer>
       <span igxDrawerItem [isHeader]="true">Views</span>
       <div *ngFor="let route of topNavLinks" igxDrawerItem igxRipple routerLinkActive="igx-nav-drawer__item--active" style='display: flow-root;' routerLink="{{route.path}}"><span>{{route.name}}</span><span style='float:right;'>{{route.time}}</span></div>
-      <span igxDrawerItem>
-        <button #btnRowCountDD igxButton="raised" (click)="toggleDropDown($event)">Rows:{{rowCount}}</button>
-        <igx-drop-down igxDrawerItem (onSelection)="selectRowCount($event)" #ddRowCount>
-          <igx-drop-down-item [igxDropDownItemNavigation]="ddRowCount" *ngFor="let rowCount of rowCounts">
-            {{ rowCount }}
-          </igx-drop-down-item>
-        </igx-drop-down>
-      </span>
+      <igx-select [(ngModel)]="rowCount" (ngModelChange)="generateData()">
+        <igx-select-item *ngFor="let rowCount of rowCounts" [value]="rowCount">
+          {{rowCount}}
+        </igx-select-item>
+      </igx-select>
     </ng-template>
   </igx-nav-drawer>
   <div  class="main" igxFlex igxLayout igxLayoutDir="columns">

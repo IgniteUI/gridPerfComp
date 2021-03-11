@@ -39,18 +39,18 @@ export class AppComponent implements OnInit {
   private _positionSettings = {
     horizontalStartPoint: HorizontalAlignment.Left,
     verticalStartPoint: VerticalAlignment.Bottom
-};
-private docChangedTimeout;
-private viewName;
-public navTitle;
+  };
+  private docChangedTimeout;
+  private viewName;
+  public navTitle;
 
-private startTime;
-private _overlaySettings = {
-  closeOnOutsideClick: true,
-  modal: false,
-  positionStrategy: new ConnectedPositioningStrategy(this._positionSettings),
-  scrollStrategy: new CloseScrollStrategy()
-};
+  private startTime;
+  private _overlaySettings = {
+    closeOnOutsideClick: true,
+    modal: false,
+    positionStrategy: new ConnectedPositioningStrategy(this._positionSettings),
+    scrollStrategy: new CloseScrollStrategy()
+  };
 
   constructor(private router: Router, private finDataService: DataGenService, private entries: RecordKeepingService) {
     for (const route of routes) {
@@ -65,7 +65,7 @@ private _overlaySettings = {
     }
   }
 
-  public subTreeChangeHandler(mutations) {
+  public subTreeChangeHandler() {
     if (this.viewName && String(this.viewName).includes('Grid')) {
       if (this.docChangedTimeout) {
         clearTimeout(this.docChangedTimeout);
@@ -113,21 +113,17 @@ private _overlaySettings = {
 
       const target = this.content.nativeElement;
 
-      const observer = new MutationObserver((mutations) => { this.subTreeChangeHandler(mutations); });
+      const observer = new MutationObserver(() => { this.subTreeChangeHandler(); });
       observer.observe(target, {subtree: true, childList: true });
 
-      this.selectRowCount(undefined);
+      this.generateData();
   }
 
   public toggleDropDown(eventArgs) {
     this._overlaySettings.positionStrategy.settings.target = eventArgs.target;
     this.ddRowCount.toggle(this._overlaySettings);
 }
-  public selectRowCount(eventArgs) {
-    if (this.ddRowCount) {
-      this.rowCount = Number(eventArgs.newSelection.element.nativeElement.innerHTML);
-    }
-
+  public generateData() {
     this.finDataService.getData(this.rowCount);
   }
 
