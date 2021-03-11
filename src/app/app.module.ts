@@ -6,9 +6,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AgGridModule } from 'ag-grid-angular';
 import { GridModule } from '@progress/kendo-angular-grid';
+
+import { WjGridModule } from '@grapecity/wijmo.angular2.grid';
+
 import { IgxNavigationDrawerModule, IgxNavbarModule, IgxLayoutModule,
         IgxRippleModule, IgxGridModule, IgxDropDownModule, IgxExcelExporterService } from 'igniteui-angular';
-import { WjGridModule } from 'wijmo/wijmo.angular2.grid';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -56,7 +58,7 @@ import { RecordKeepingService } from './services/recordkeeping.service';
     IgxRippleModule,
     IgxDropDownModule,
 
-    IgxGridModule.forRoot(),
+    IgxGridModule,
     AgGridModule.withComponents([]),
     GridModule,
     WjGridModule

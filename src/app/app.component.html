@@ -14,7 +14,7 @@
     </ng-template>
   </igx-nav-drawer>
   <div  class="main" igxFlex igxLayout igxLayoutDir="columns">
-    <igx-navbar [title]="navTitle" actionButtonIcon="menu" (onAction)="nav.toggle()"></igx-navbar>
+    <igx-navbar [title]="navTitle" actionButtonIcon="menu" (action)="nav.toggle()"></igx-navbar>
     <div class="content" igxFlex #contentHolder>
       <router-outlet></router-outlet>
      </div>
